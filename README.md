@@ -1,50 +1,14 @@
-# React + TypeScript + Vite
+# 캘린더 픽커
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로젝트는 **React**, **TypeScript**로 작성된 캘린더 픽커입니다. **Tailwind CSS**를 사용하여 스타일링하며, 날짜 선택, 범위 날짜 선택, 다크/라이트 모드 지원 등의 기능을 제공합니다. 이 캘린더는 날짜 선택, 예약 등 날짜와 관련된 다양한 기능에 사용할 수 있습니다.
 
-Currently, two official plugins are available:
+## 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **단일 날짜 선택**: 사용자가 특정 날짜를 선택할 수 있습니다.
+- **범위 날짜 선택**: 사용자가 시작 날짜와 종료 날짜를 선택하여 범위를 설정할 수 있습니다.
+- **다크/라이트 모드 지원**: 캘린더는 다크 모드와 라이트 모드를 전환할 수 있습니다.
+- **Tailwind CSS 스타일링**: 반응형 레이아웃과 커스터마이징이 가능한 Tailwind CSS를 사용하여 UI가 구성됩니다.
 
-## Expanding the ESLint configuration
+## 설치
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+프로젝트를 시작하려면 아래의 단계를 따라주세요:
