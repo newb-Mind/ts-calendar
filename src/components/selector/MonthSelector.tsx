@@ -1,6 +1,6 @@
 
 
-const MonthSelector = ({monthSetHandler}) => {
+const MonthSelector = ({monthSetHandler}:{monthSetHandler:any} )=> {
 
     const months = Array.from({length:12},(_,idx:number)=>{
         return idx+1

@@ -4,6 +4,7 @@ import React from "react";
 import {CalendarDateType} from "./type/DataType.ts";
 import MonthSelector from "./components/selector/MonthSelector.tsx";
 import {CalendarShowType} from "./type/DataType.ts";
+import YearSelector from "./components/selector/YearSelector.tsx";
 
 
 type CalendarIndoType = {
@@ -34,11 +35,15 @@ function Calendar({now = new Date()}) {
         }
     }
     const monthSetHandler= (num:number)=>()=>{
-        const changedDate = new Date(year,num-1,1);
-        setMonth(changedDate.getMonth()+1);
-        setYear(changedDate.getFullYear());
+        setMonth(num);
         if(setShowType)
         setShowType(CalendarShowType.DATE);
+    }
+
+    const yearSetHandler= (num:number)=>()=>{
+        setYear(num);
+        if(setShowType)
+            setShowType(CalendarShowType.MONTH);
     }
     const monthHandler = (num:number)=>()=>{
         const changedDate = new Date(year,month-1+num,1);
@@ -76,7 +81,7 @@ function Calendar({now = new Date()}) {
                 </div>
                 <button onClick={monthHandler(1)}>Next</button>
             </div>
-        <div className={"relative inline-block"}>
+        <div className={"relative inline-block overflow-auto"}>
 
             <table>
                 <thead>
@@ -103,7 +108,7 @@ function Calendar({now = new Date()}) {
                 </tbody>
             </table>
             {showType === CalendarShowType.MONTH && <MonthSelector monthSetHandler={monthSetHandler}/>}
-
+            {showType === CalendarShowType.YEAR && <YearSelector yearSetHandler={yearSetHandler} />}
         </div>
 
     </>

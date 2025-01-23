@@ -1,40 +1,30 @@
-import React from "react";
-
-
 const YearSelector =  ({
-                           start = 1900,
-                           end = 2100,
+                           startYear = 1900,
+                           endYear = 2100,
                            yearSetHandler,
                        }: {
-    start?: number;
-    end?: number;
+    startYear?: number;
+    endYear?: number;
     yearSetHandler: any;
 }) => {
 
-    const [startYear,setStartYear] = React.useState<number>(start);
-    const [endYear,setEndYear] = React.useState<number>(end);
+    const years = Array.from({length:endYear-startYear},(_,idx:number)=>startYear+idx)
 
-
-    const months = Array.from({length:12},(_,idx:number)=>{
-        return idx+1
-    })
-
-
-
-    return <table className={"absolute left-0 top-0 w-full h-full  bg-white border-collapse"}>
+    return <table className={"absolute left-0 top-0 w-full h-full  bg-white border-collapse overflow-auto"}>
         {
-            months.map((_, index: number) => {
-                // 7개씩 묶어서 <tr> 태그로 감싸기
+            years.map((_, index: number) => {
+                // 3개씩 묶어서 <tr> 태그로 감싸기
                 if (index % 3 === 0) {
                     return (
-                        <tr key={`month-row-${index / 3}`}>
-                            {months.slice(index, index + 3).map((month:number) => (
-                                <td onClick={yearSetHandler(month)} className={`border border-gray-300 text-center hover:bg-slate-100 hover:cursor-pointer`} key={`month-item-${month}`}>{month}월</td>
+                        <tr key={`year-row-${index / 3}`} >
+                            {years.slice(index, index + 3).map((year:number) => (
+                                <td onClick={yearSetHandler(year)} className={`border border-gray-300 text-center hover:bg-slate-100 hover:cursor-pointer  
+                                h-20`} key={`year-item-${year}`}>{year}년</td>
                             ))}
                         </tr>
                     );
                 }
-                return null; // 7개씩 그룹화된 tr만 반환
+                return null; // 3개씩 그룹화된 tr만 반환
             })
         }
     </table>
